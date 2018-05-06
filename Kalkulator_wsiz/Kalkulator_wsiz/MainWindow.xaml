@@ -1,12 +1,48 @@
 ﻿<Window x:Class="Kalkulator_wsiz.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Kalkulator_wsiz"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Kalkulator" Width="500" Height="370" ResizeMode="NoResize">
+    <Grid Height="341" VerticalAlignment="Bottom" Margin="0,0,0,0">
+
+        <Menu Margin="0,0,0,321" Height="20" VerticalAlignment="Bottom">
+            <MenuItem Header="Widok">
+                <MenuItem Header="_Standardowy" />
+                <Separator />
+                <MenuItem Header="_Naukowy"  />
+                <Separator />
+                <MenuItem Header="_Save" />
+                <MenuItem Header="_Save As..." />
+                <Separator />
+                <MenuItem Header="_Exit" />
+            </MenuItem>
+        </Menu>
+
+        <Button Content="7" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="8" HorizontalAlignment="Left" Margin="53,148,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="9" HorizontalAlignment="Left" Margin="96,148,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="/" HorizontalAlignment="Left" Margin="139,148,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="4" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="5" HorizontalAlignment="Left" Margin="53,191,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="6" HorizontalAlignment="Left" Margin="96,191,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="*" HorizontalAlignment="Left" Margin="139,191,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="1" HorizontalAlignment="Left" Margin="10,234,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="2" HorizontalAlignment="Left" Margin="53,234,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="3" HorizontalAlignment="Left" Margin="96,234,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="-" HorizontalAlignment="Left" Margin="139,234,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="0" HorizontalAlignment="Left" Margin="10,277,0,0" VerticalAlignment="Top" Width="81" Height="38"/>
+        <Button Content="," HorizontalAlignment="Left" Margin="96,277,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="+" HorizontalAlignment="Left" Margin="139,277,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="=" HorizontalAlignment="Left" Margin="182,234,0,0" VerticalAlignment="Top" Width="38" Height="81"/>
+        <Button Content="C" HorizontalAlignment="Left" Margin="96,105,0,0" VerticalAlignment="Top" Width="38" Height="38" ToolTip="Wyczyść" />
+        <TextBox x:Name="txtDisplay"  TextAlignment="Right" Margin="10,54,0,266" TextWrapping="Wrap" IsEnabled="False" Height="21" HorizontalAlignment="Left" Width="210"/>
+        <TextBox x:Name="txtDisplayMemory" HorizontalAlignment="Left" Height="20" Margin="10,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" TextAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="txtDisplayOperation" HorizontalAlignment="Left" Height="20" Margin="139,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" IsEnabled="False"/>
+        <Button Content="&lt;-" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="38" Height="38"  ToolTip="Wyczyść" />
+        <Button Content="CE" HorizontalAlignment="Left" Margin="53,105,0,0" VerticalAlignment="Top" Width="38" Height="38" ToolTip="Wyczyść" />
+        <Button Content="±" HorizontalAlignment="Left" Margin="139,105,0,0" VerticalAlignment="Top" Width="38" Height="38" ToolTip="Wyczyść"  />
+        <Button Content="√" HorizontalAlignment="Left" Margin="182,105,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="%" HorizontalAlignment="Left" Margin="182,148,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="1/x" HorizontalAlignment="Left" Margin="182,191,0,0" VerticalAlignment="Top" Width="38" Height="38"/>  
         
     </Grid>
 </Window>

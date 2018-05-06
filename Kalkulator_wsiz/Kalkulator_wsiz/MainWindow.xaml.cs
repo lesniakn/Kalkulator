@@ -24,5 +24,15 @@ namespace Kalkulator_wsiz
         {
             InitializeComponent();
         }
+
+        private void BackspaceButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NumberButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
