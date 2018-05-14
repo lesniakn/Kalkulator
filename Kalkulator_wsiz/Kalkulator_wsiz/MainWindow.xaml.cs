@@ -171,7 +171,12 @@ namespace Kalkulator_wsiz
 
         private void MenuItem_Standard_Click(object sender, RoutedEventArgs e)
         {
-            this.Width = 240;
+            this.Width = 250;
+            txtDisplay.Width = 210;
+        }
+        private void MenuItem_Scientific_Click(object sender, RoutedEventArgs e)
+        {
+            this.Width = 390;
             txtDisplay.Width = 210;
         }
 
@@ -229,10 +234,138 @@ namespace Kalkulator_wsiz
 
                 txtDisplay.Text = "-" + txtDisplay.Text;
             }
-
-
-
         }
 
-    } }
+            private void PI_Button_Click(object sender, RoutedEventArgs e)
+            {
+                txtDisplay.Text = Math.PI.ToString();
+            }
 
+
+            private void Log_Button_Click(object sender, RoutedEventArgs e)
+            {
+                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+                if (empty == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    double ilog = Double.Parse(txtDisplay.Text);
+                    ilog = Math.Log10(ilog);
+                    txtDisplayOperation.Text = ("Log" + "(" + (txtDisplay.Text) + ")").ToString();
+                    txtDisplay.Text = ilog.ToString();
+                }
+
+            }
+
+            
+            private void Sinh_Button_Click(object sender, RoutedEventArgs e)
+            {
+                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+                if (empty == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    double sinh = Double.Parse(txtDisplay.Text);
+                    sinh = Math.Sinh(sinh);
+                    txtDisplayOperation.Text = ("Sinh" + "(" + (txtDisplay.Text) + ")").ToString();
+                    txtDisplay.Text = sinh.ToString();
+                }
+            }
+
+            private void Sin_Button_Click(object sender, RoutedEventArgs e)
+            {
+                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+                if (empty == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    double sin = Double.Parse(txtDisplay.Text);
+                    sin = Math.Sin(sin); // w radianach
+                    txtDisplayOperation.Text = ("Sin" + "(" + (txtDisplay.Text) + ")").ToString();
+                    txtDisplayMemory.Text = "Rad.";
+                    txtDisplay.Text = sin.ToString();
+                }
+            }
+
+            private void Cos_Button_Click(object sender, RoutedEventArgs e)
+            {
+                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+                if (empty == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    double cos = Double.Parse(txtDisplay.Text);
+                    cos = Math.Cos(cos); // w radianach
+                    txtDisplayOperation.Text = ("Cos" + "(" + (txtDisplay.Text) + ")").ToString();
+                    txtDisplayMemory.Text = "Rad.";
+                    txtDisplay.Text = cos.ToString();
+                }
+            }
+
+            private void Cosh_Button_Click(object sender, RoutedEventArgs e)
+            {
+                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+                if (empty == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    double cosh = Double.Parse(txtDisplay.Text);
+                    cosh = Math.Cosh(cosh); // w radianach
+                    txtDisplayOperation.Text = ("Cosh" + "(" + (txtDisplay.Text) + ")").ToString();
+                    txtDisplay.Text = cosh.ToString();
+                }
+            }
+
+        private void Tanh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                double tanh = Double.Parse(txtDisplay.Text);
+                tanh = Math.Tanh(tanh); // w radianach
+                txtDisplayOperation.Text = ("tanh" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplay.Text = tanh.ToString();
+            }
+        }
+
+            private void Tan_Button_Click(object sender, RoutedEventArgs e)
+            {
+                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+                if (empty == true)
+                {
+                    return;
+
+                }
+                else
+                {
+                    double tan = Double.Parse(txtDisplay.Text);
+                    tan = Math.Tan(tan); // w radianach
+                    txtDisplayOperation.Text = ("tan" + "(" + (txtDisplay.Text) + ")").ToString();
+                    txtDisplay.Text = tan.ToString();
+                }
+            }
+
+         
+            }
+        }
+    
