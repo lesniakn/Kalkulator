@@ -34,7 +34,7 @@ namespace Kalkulator_wsiz
     }
     public partial class MainWindow : Window
     {
-        
+
         private Operation m_eLastOperationSelected = Operation.none;
         public MainWindow()
         {
@@ -59,12 +59,40 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = string.Empty;
                 m_eLastOperationSelected = Operation.none;
             }
-            if ((txtDisplay.Text.Contains(',')) ||
-                (0 == txtDisplay.Text.Length))
+            if (txtDisplay.Text.Contains(','))
             {
                 return;
             }
-            txtDisplay.Text += ",";
+            if (txtDisplay.Text.Length != 0)
+            {
+                txtDisplay.Text += ",";
+                return;
+
+            }
+            if (0 == txtDisplay.Text.Length)
+            {
+                txtDisplay.Text += "0,";
+            }
+        }
+        private void ZeroButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
+        {
+            if (Operation.result == m_eLastOperationSelected)
+            {
+                txtDisplay.Text = string.Empty;
+                m_eLastOperationSelected = Operation.none;
+            }
+            if ((txtDisplay.Text.Contains('0')) & (1 == txtDisplay.Text.Length))
+            {
+                return;
+            }
+            if (0 != txtDisplay.Text.Length)
+            {
+                txtDisplay.Text += "0";
+            }
+            if (0 == txtDisplay.Text.Length)
+            {
+                txtDisplay.Text += "0";
+            }                    
         }
 
         private void EraseButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
@@ -77,41 +105,49 @@ namespace Kalkulator_wsiz
 
         private void OperationButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
-            // sprawdzenie czy poprzednia operacja czy jest rozna od none i od wyniku, jeśli nie to wykonać pozostałe operacje
-            if ((Operation.none != m_eLastOperationSelected) || (Operation.result != m_eLastOperationSelected))
             {
-                ResultButton_Click(this, eRoutedEventArgs);
-            }
-            Button oButton = (Button)oSender;
-            switch (oButton.Content.ToString())
-            {
-                case "+":
-                    m_eLastOperationSelected = Operation.addition;
-                    break;
-                case "-":
-                    m_eLastOperationSelected = Operation.subtraction;
-                    break;
-                case "*":
-                    m_eLastOperationSelected = Operation.multiplication;
-                    break;
-                case "/":
-                    m_eLastOperationSelected = Operation.division;
-                    break;
-                case "Mod":
-                    m_eLastOperationSelected = Operation.mod;
-                    break;
-                case "Exp":
-                    m_eLastOperationSelected = Operation.exp;
-                    break;
+                // sprawdzenie czy poprzednia operacja jest rozna od none i od wyniku, jeśli nie to wykonać pozostałe operacje
+                if ((Operation.none != m_eLastOperationSelected) || (Operation.result != m_eLastOperationSelected))
+                {
+                    ResultButton_Click(this, eRoutedEventArgs);
+                    //txtDisplayOperation.MaxLength = 1 ;
 
-
-                default:
-                    MessageBox.Show("Nieznana operacja!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (txtDisplay.Text == string.Empty)
+                {
                     return;
+                }
+                Button oButton = (Button)oSender;
+                switch (oButton.Content.ToString())
+                {
+                    case "+":
+                        m_eLastOperationSelected = Operation.addition;
+                        break;
+                    case "-":
+                        m_eLastOperationSelected = Operation.subtraction;
+                        break;
+                    case "*":
+                        m_eLastOperationSelected = Operation.multiplication;
+                        break;
+                    case "/":
+                        m_eLastOperationSelected = Operation.division;
+                        break;
+                    case "Mod":
+                        m_eLastOperationSelected = Operation.mod;
+                        break;
+                    case "Exp":
+                        m_eLastOperationSelected = Operation.exp;
+                        break;
+
+
+                    default:
+                        MessageBox.Show("Nieznana operacja!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                }
+                txtDisplayMemory.Text = txtDisplay.Text;
+                txtDisplayOperation.Text = oButton.Content.ToString();
+                txtDisplay.Text = string.Empty;
             }
-            txtDisplayMemory.Text = txtDisplay.Text;
-            txtDisplayOperation.Text = oButton.Content.ToString();
-            txtDisplay.Text = string.Empty;
         }
 
         private void ResultButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
@@ -222,114 +258,119 @@ namespace Kalkulator_wsiz
 
         private void Pos_Neg_Button_Click(object sender, RoutedEventArgs e)
         {
-
-
-            if ((txtDisplay.Text.Contains('-')) ||
-                (0 == txtDisplay.Text.Length))
+            if (txtDisplay.Text != string.Empty)
             {
-                return;
+                if ((txtDisplay.Text.Contains('-')) ||
+                    (0 == txtDisplay.Text.Length))
+                {
+                    double a = Convert.ToDouble(txtDisplay.Text);
+                    a = a * (-1);
+                    txtDisplay.Text = a.ToString();
+                }
+
+                else
+                {
+                    double a = Convert.ToDouble(txtDisplay.Text);
+                    a = a * (-1);
+                    txtDisplay.Text = a.ToString();
+                }
+
             }
             else
             {
+                return;
+            }
 
-                txtDisplay.Text = "-" + txtDisplay.Text;
+        }
+
+        private void Log_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                double ilog = Double.Parse(txtDisplay.Text);
+                ilog = Math.Log10(ilog);
+                txtDisplayOperation.Text = ("Log" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplay.Text = ilog.ToString();
+            }
+
+        }
+
+
+        private void Sinh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                double sinh = Double.Parse(txtDisplay.Text);
+                sinh = Math.Sinh(sinh);
+                txtDisplayOperation.Text = ("Sinh" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplay.Text = sinh.ToString();
             }
         }
 
-            private void PI_Button_Click(object sender, RoutedEventArgs e)
+        private void Sin_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
             {
-                txtDisplay.Text = Math.PI.ToString();
-            }
-
-
-            private void Log_Button_Click(object sender, RoutedEventArgs e)
-            {
-                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-                if (empty == true)
-                {
-                    return;
-
-                }
-                else
-                {
-                    double ilog = Double.Parse(txtDisplay.Text);
-                    ilog = Math.Log10(ilog);
-                    txtDisplayOperation.Text = ("Log" + "(" + (txtDisplay.Text) + ")").ToString();
-                    txtDisplay.Text = ilog.ToString();
-                }
+                return;
 
             }
-
-            
-            private void Sinh_Button_Click(object sender, RoutedEventArgs e)
+            else
             {
-                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-                if (empty == true)
-                {
-                    return;
-
-                }
-                else
-                {
-                    double sinh = Double.Parse(txtDisplay.Text);
-                    sinh = Math.Sinh(sinh);
-                    txtDisplayOperation.Text = ("Sinh" + "(" + (txtDisplay.Text) + ")").ToString();
-                    txtDisplay.Text = sinh.ToString();
-                }
+                double sin = Double.Parse(txtDisplay.Text);
+                sin = Math.Sin(sin); // w radianach
+                txtDisplayOperation.Text = ("Sin" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplayMemory.Text = "Rad.";
+                txtDisplay.Text = sin.ToString();
             }
+        }
 
-            private void Sin_Button_Click(object sender, RoutedEventArgs e)
+        private void Cos_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
             {
-                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-                if (empty == true)
-                {
-                    return;
+                return;
 
-                }
-                else
-                {
-                    double sin = Double.Parse(txtDisplay.Text);
-                    sin = Math.Sin(sin); // w radianach
-                    txtDisplayOperation.Text = ("Sin" + "(" + (txtDisplay.Text) + ")").ToString();
-                    txtDisplayMemory.Text = "Rad.";
-                    txtDisplay.Text = sin.ToString();
-                }
             }
-
-            private void Cos_Button_Click(object sender, RoutedEventArgs e)
+            else
             {
-                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-                if (empty == true)
-                {
-                    return;
-
-                }
-                else
-                {
-                    double cos = Double.Parse(txtDisplay.Text);
-                    cos = Math.Cos(cos); // w radianach
-                    txtDisplayOperation.Text = ("Cos" + "(" + (txtDisplay.Text) + ")").ToString();
-                    txtDisplayMemory.Text = "Rad.";
-                    txtDisplay.Text = cos.ToString();
-                }
+                double cos = Double.Parse(txtDisplay.Text);
+                cos = Math.Cos(cos); // w radianach
+                txtDisplayOperation.Text = ("Cos" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplayMemory.Text = "Rad.";
+                txtDisplay.Text = cos.ToString();
             }
+        }
 
-            private void Cosh_Button_Click(object sender, RoutedEventArgs e)
+        private void Cosh_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
             {
-                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-                if (empty == true)
-                {
-                    return;
+                return;
 
-                }
-                else
-                {
-                    double cosh = Double.Parse(txtDisplay.Text);
-                    cosh = Math.Cosh(cosh); // w radianach
-                    txtDisplayOperation.Text = ("Cosh" + "(" + (txtDisplay.Text) + ")").ToString();
-                    txtDisplay.Text = cosh.ToString();
-                }
             }
+            else
+            {
+                double cosh = Double.Parse(txtDisplay.Text);
+                cosh = Math.Cosh(cosh); // w radianach
+                txtDisplayOperation.Text = ("Cosh" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplay.Text = cosh.ToString();
+            }
+        }
 
         private void Tanh_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -348,24 +389,103 @@ namespace Kalkulator_wsiz
             }
         }
 
-            private void Tan_Button_Click(object sender, RoutedEventArgs e)
+        private void Tan_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
             {
-                bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-                if (empty == true)
-                {
-                    return;
+                return;
 
-                }
-                else
-                {
-                    double tan = Double.Parse(txtDisplay.Text);
-                    tan = Math.Tan(tan); // w radianach
-                    txtDisplayOperation.Text = ("tan" + "(" + (txtDisplay.Text) + ")").ToString();
-                    txtDisplay.Text = tan.ToString();
-                }
             }
-
-         
+            else
+            {
+                double tan = Double.Parse(txtDisplay.Text);
+                tan = Math.Tan(tan); // w radianach
+                txtDisplayOperation.Text = ("tan" + "(" + (txtDisplay.Text) + ")").ToString();
+                txtDisplay.Text = tan.ToString();
             }
         }
+        private void Bin_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                int a = int.Parse(txtDisplay.Text);
+                txtDisplay.Text = System.Convert.ToString(a, 2);
+            }
+        }
+
+        private void Hex_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                int a = int.Parse(txtDisplay.Text);
+                txtDisplay.Text = System.Convert.ToString(a, 16);
+            }
+        }
+
+        private void Oct_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                int a = int.Parse(txtDisplay.Text);
+                txtDisplay.Text = System.Convert.ToString(a, 8);
+            }
+        }
+        private void x2_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                Double a;
+                a = Convert.ToDouble(txtDisplay.Text) * Convert.ToDouble(txtDisplay.Text);
+                txtDisplayOperation.Text = txtDisplay.Text + "*" + txtDisplay.Text;
+                txtDisplay.Text = System.Convert.ToString(a);
+            }
+
+        }
+        private void PercentButton_Click(object sender, RoutedEventArgs e)
+        {
+            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            if (empty == true)
+            {
+                return;
+
+            }
+            else
+            {
+                Double a;
+                a = Convert.ToDouble(txtDisplay.Text) / Convert.ToDouble(100);
+                txtDisplay.Text = System.Convert.ToString(a);
+            }
+        }
+
+        private void PI_Button_Click(object sender, RoutedEventArgs e)
+        {
+            txtDisplay.Text = Math.PI.ToString();
+        }
+    }
+}
     

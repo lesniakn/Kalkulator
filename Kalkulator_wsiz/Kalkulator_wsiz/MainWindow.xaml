@@ -25,7 +25,7 @@
         <Button Content="2" HorizontalAlignment="Left" Margin="55,272,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
         <Button Content="3" HorizontalAlignment="Left" Margin="98,272,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="141,272,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click"/>
-        <Button Content="0" HorizontalAlignment="Left" Margin="12,315,0,0" VerticalAlignment="Top" Width="81" Height="38" Click="NumberButton_Click"/>
+        <Button Content="0" HorizontalAlignment="Left" Margin="12,315,0,0" VerticalAlignment="Top" Width="81" Height="38" Click="ZeroButton_Click"/>
         <Button Content="," HorizontalAlignment="Left" Margin="98,315,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="CommaButton_Click"/>
         <Button Content="+" HorizontalAlignment="Left" Margin="141,315,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click" />
         <Button Content="=" HorizontalAlignment="Left" Margin="184,272,0,0" VerticalAlignment="Top" Width="38" Height="81" Click="ResultButton_Click"/>
@@ -37,22 +37,22 @@
         <Button Content="CE" HorizontalAlignment="Left" Margin="55,143,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="CleartxtDisplay_Button_Click" />
         <Button Content="±" HorizontalAlignment="Left" Margin="141,143,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Pos_Neg_Button_Click" />
         <Button Content="√" HorizontalAlignment="Left" Margin="184,143,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Sqrt_Button_Click"  />
-        <Button Content="%" HorizontalAlignment="Left" Margin="184,186,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="EraseButton_Click"/>
+        <Button Content="%" HorizontalAlignment="Left" Margin="184,186,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="PercentButton_Click"/>
         <Button Content="1/x" HorizontalAlignment="Left" Margin="184,229,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OneX_Button_Click" />
         <Button Content="sinh" HorizontalAlignment="Left" Margin="240,186,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Sinh_Button_Click" />
         <Button Content="sin" HorizontalAlignment="Left" Margin="283,186,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Sin_Button_Click"/>
         <Button Content="cosh" HorizontalAlignment="Left" Margin="240,229,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Cosh_Button_Click"/>
         <Button Content="cos" HorizontalAlignment="Left" Margin="283,229,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Cos_Button_Click"/>
-        <Button Content="Bin" HorizontalAlignment="Left" Margin="326,229,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="Bin" HorizontalAlignment="Left" Margin="326,229,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Bin_Button_Click"/>
         <Button Content="tanh" HorizontalAlignment="Left" Margin="240,272,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Tanh_Button_Click"/>
         <Button Content="tan" HorizontalAlignment="Left" Margin="283,272,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Tan_Button_Click"/>
-        <Button Content="Hex" HorizontalAlignment="Left" Margin="326,272,0,0" VerticalAlignment="Top" Width="38" Height="38" />
-        <Button Content="Exp" HorizontalAlignment="Left" Margin="240,315,0,0" VerticalAlignment="Top" Width="38" Height="38" />
-        <Button Content="Oct" HorizontalAlignment="Left" Margin="326,315,0,0" VerticalAlignment="Top" Width="38" Height="38" />
-        <Button Content="x^2" HorizontalAlignment="Left" Margin="326,186,0,0" VerticalAlignment="Top" Width="38" Height="38" />
-        <Button Content="π" HorizontalAlignment="Left" Margin="240,143,0,0" VerticalAlignment="Top" Width="38" Height="38"  />
-        <Button Content="Log" HorizontalAlignment="Left" Margin="283,143,0,0" VerticalAlignment="Top" Width="38" Height="38"  />
-        <Button Content="Mod" HorizontalAlignment="Left" Margin="283,315,0,0" VerticalAlignment="Top" Width="38" Height="38" />
+        <Button Content="Hex" HorizontalAlignment="Left" Margin="326,272,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Hex_Button_Click"/>
+        <Button Content="Exp" HorizontalAlignment="Left" Margin="240,315,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click"/>
+        <Button Content="Oct" HorizontalAlignment="Left" Margin="326,315,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Oct_Button_Click" />
+        <Button Content="x^2" HorizontalAlignment="Left" Margin="326,186,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="x2_Button_Click"/>
+        <Button Content="π" HorizontalAlignment="Left" Margin="240,143,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="PI_Button_Click" />
+        <Button Content="Log" HorizontalAlignment="Left" Margin="283,143,0,0" VerticalAlignment="Top" Width="38" Height="38"  Click="Log_Button_Click"/>
+        <Button Content="Mod" HorizontalAlignment="Left" Margin="283,315,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click"/>
         <Button Content="" HorizontalAlignment="Left" Margin="326,143,0,0" VerticalAlignment="Top" Width="38" Height="38" ToolTip="Wyczyść" IsEnabled="False" />
 
     </Grid>
