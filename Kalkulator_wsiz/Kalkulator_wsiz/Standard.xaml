@@ -4,11 +4,37 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Kalkulator_wsiz"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Standard">
+      mc:Ignorable="d"
+      Title="Standard" Width="244" Height="297">
 
     <Grid>
-        
+        <Button Content="7" HorizontalAlignment="Left" Margin="16,117,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="8" HorizontalAlignment="Left" Margin="59,117,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="9" HorizontalAlignment="Left" Margin="102,117,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="/" HorizontalAlignment="Left" Margin="145,117,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click" />
+        <Button Content="4" HorizontalAlignment="Left" Margin="16,160,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="5" HorizontalAlignment="Left" Margin="59,160,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="6" HorizontalAlignment="Left" Margin="102,160,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="*" HorizontalAlignment="Left" Margin="145,160,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click"/>
+        <Button Content="1" HorizontalAlignment="Left" Margin="16,203,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="2" HorizontalAlignment="Left" Margin="59,203,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="3" HorizontalAlignment="Left" Margin="102,203,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="NumberButton_Click"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="145,203,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click"/>
+        <Button Content="0" HorizontalAlignment="Left" Margin="16,246,0,0" VerticalAlignment="Top" Width="81" Height="38" Click="ZeroButton_Click"/>
+        <Button Content="," HorizontalAlignment="Left" Margin="102,246,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="CommaButton_Click"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="145,246,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OperationButton_Click" />
+        <Button Content="=" HorizontalAlignment="Left" Margin="188,203,0,0" VerticalAlignment="Top" Width="38" Height="81" Click="ResultButton_Click"/>
+        <Button Content="C" HorizontalAlignment="Left" Margin="102,74,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="EraseButton_Click"/>
+        <TextBox x:Name="txtDisplay"  TextAlignment="Right" Margin="16,38,0,0" TextWrapping="Wrap" IsEnabled="False" Height="21" HorizontalAlignment="Left" Width="210" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDisplayMemory" HorizontalAlignment="Left" Height="20" Margin="16,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" TextAlignment="Right" IsEnabled="False"/>
+        <TextBox x:Name="txtDisplayOperation" HorizontalAlignment="Left" Height="20" Margin="145,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" IsEnabled="False"/>
+        <Button Content="&lt;-" HorizontalAlignment="Left" Margin="16,74,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="BackspaceButton_Click" />
+        <Button Content="CE" HorizontalAlignment="Left" Margin="59,74,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="CleartxtDisplay_Button_Click" />
+        <Button Content="±" HorizontalAlignment="Left" Margin="145,74,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Pos_Neg_Button_Click" />
+        <Button Content="√" HorizontalAlignment="Left" Margin="188,74,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="Sqrt_Button_Click"  />
+        <Button Content="%" HorizontalAlignment="Left" Margin="188,117,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="PercentButton_Click"/>
+        <Button Content="1/x" HorizontalAlignment="Left" Margin="188,160,0,0" VerticalAlignment="Top" Width="38" Height="38" Click="OneX_Button_Click" />
+
     </Grid>
 </Page>
+
