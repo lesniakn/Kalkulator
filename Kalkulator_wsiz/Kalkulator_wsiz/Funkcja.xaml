@@ -10,9 +10,9 @@
     <Grid>
 
 
-        <Button x:Name="oblicz_btn" Content="Oblicz" HorizontalAlignment="Left" Margin="215,32,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
-        <Button x:Name="wyczysc_btn" Content="Wyczyść" HorizontalAlignment="Left" Margin="295,32,0,0" VerticalAlignment="Top" Width="75" Height="20" Visibility="Hidden"/>
-        <Button x:Name="wykres_btn" Content="Wykres" HorizontalAlignment="Left" Margin="295,57,0,0" VerticalAlignment="Top" Width="75" Height="20" Visibility="Hidden"/>
+        <Button x:Name="oblicz_btn" Content="Oblicz" HorizontalAlignment="Left" Margin="215,32,0,0" VerticalAlignment="Top" Width="75" Click="draw_btn_Click" Height="20"/>
+        <Button x:Name="wyczysc_btn" Content="Wyczyść" HorizontalAlignment="Left" Margin="295,32,0,0" VerticalAlignment="Top" Width="75" Click="Delete_btn_Click" Height="20" Visibility="Hidden"/>
+        <Button x:Name="wykres_btn" Content="Wykres" HorizontalAlignment="Left" Margin="295,57,0,0" VerticalAlignment="Top" Width="75" Click="wykres_btn_Click" Height="20" Visibility="Hidden"/>
         <TextBox x:Name="tb_a" HorizontalAlignment="Left" Height="20" Margin="86,32,0,0" TextWrapping="Wrap" Text="a" VerticalAlignment="Top" Width="20" RenderTransformOrigin="0.548,1.174" ToolTip="Wartość x przy najwyższej potędze" GotFocus="TextBox_GotFocus" AutomationProperties.IsOffscreenBehavior="Offscreen">
             <TextBox.Background>
                 <ImageBrush/>
@@ -127,8 +127,34 @@
         <Label Content="Zbiór wartości funkcji:" HorizontalAlignment="Left" Height="30" Margin="10,251,0,0" VerticalAlignment="Top" Width="132"/>
         <Label Content="Monotoniczność:" HorizontalAlignment="Left" Height="39" Margin="10,307,0,0" VerticalAlignment="Top" Width="112"/>
         <Label Content="Postacie funkcji:" HorizontalAlignment="Left" Height="50" Margin="12,390,0,0" VerticalAlignment="Top" Width="110"/>
+        <Rectangle x:Name="wykres1" HorizontalAlignment="Left" Height="247" Margin="417,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="325" IsEnabled="False" Visibility="Hidden">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Wykresy/wykres1.jpg"/>
+            </Rectangle.Fill>
 
 
+        </Rectangle>
+        <Rectangle x:Name="wykres2" HorizontalAlignment="Left" Height="247" Margin="417,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="325" IsEnabled="False" Visibility="Hidden">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Wykresy/wykres2.jpg"/>
+            </Rectangle.Fill>
+
+
+        </Rectangle>
+        <Rectangle x:Name="wykres3" HorizontalAlignment="Left" Height="247" Margin="417,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="325" IsEnabled="False" Visibility="Hidden">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Wykresy/wykres3.jpg"/>
+            </Rectangle.Fill>
+
+
+        </Rectangle>
+        <Rectangle x:Name="wykres4" HorizontalAlignment="Left" Height="247" Margin="417,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="325" IsEnabled="False" Visibility="Hidden">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Wykresy/wykres4.jpg"/>
+            </Rectangle.Fill>
+
+
+        </Rectangle>
         <TextBox x:Name="tb_result8" HorizontalAlignment="Left" Height="20" Margin="440,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden">
             <TextBox.RenderTransform>
                 <TransformGroup>

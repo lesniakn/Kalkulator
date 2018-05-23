@@ -114,5 +114,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wykresy\wykres1.jpg" />
+    <Resource Include="Wykresy\wykres2.jpg" />
+    <Resource Include="Wykresy\wykres3.jpg" />
+    <Resource Include="Wykresy\wykres4.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
