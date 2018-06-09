@@ -114,6 +114,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Wykresy\wykres1.jpg" />
     <Resource Include="Wykresy\wykres2.jpg" />
