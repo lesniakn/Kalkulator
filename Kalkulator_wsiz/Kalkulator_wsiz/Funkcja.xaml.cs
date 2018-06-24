@@ -5,6 +5,20 @@ using System.Windows.Input;
 
 namespace Kalkulator_wsiz
 {
+    class Funkcje
+    {
+        public double a;
+        public double b;
+        public double c;
+        public double obl_delta;
+        public double x1;//miejsce zerowe1
+        public double x2;//miejsce zerowe2
+        public double p;//wierzchołek funkcji
+        public double q;//wierzchołek funkcji
+        public double zw1;//zbiór wartości, delta > 0
+        public double zw2;//zbiór wartości, delta < 0
+    }
+
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
@@ -59,54 +73,51 @@ namespace Kalkulator_wsiz
         }
         private void wykres_btn_Click(object sender, RoutedEventArgs e)
         {
-
-            double a = Convert.ToDouble(tb_a.Text);
-            double b = Convert.ToDouble(tb_b.Text);
-            double c = Convert.ToDouble(tb_c.Text);
-            double obl_delta;//delta
-
-            double x1;//miejsce zerowe1
-            double x2;//miejsce zerowe2
-            double p;//wierzchołek funkcji
-            double q;//wierzchołek funkcji
-            obl_delta = (b * b) - 4 * a * c;
-            p = ((-b) / (2 * a));
-            q = ((-obl_delta) / (4 * a));
-            x1 = (-b - Math.Sqrt(obl_delta)) / (2 * a);
-            x2 = (-b + Math.Sqrt(obl_delta)) / (2 * a);
+            Funkcje wykres = new Funkcje();
+            wykres.a = Convert.ToDouble(tb_a.Text);
+            wykres.b = Convert.ToDouble(tb_b.Text);
+            wykres.c = Convert.ToDouble(tb_c.Text);
 
 
-            if (a > 0 & obl_delta > 0)
+            wykres.obl_delta = (wykres.b * wykres.b) - 4 * wykres.a * wykres.c;
+            wykres.p = ((-wykres.b) / (2 * wykres.a));
+            wykres.q = ((-wykres.obl_delta) / (4 * wykres.a));
+            wykres.x1 = (-wykres.b - Math.Sqrt(wykres.obl_delta)) / (2 * wykres.a);
+            wykres.x2 = (-wykres.b + Math.Sqrt(wykres.obl_delta)) / (2 * wykres.a);
+
+
+
+            if (wykres.a > 0 & wykres.obl_delta > 0)
             {
                 wykres1.Visibility = Visibility;
                 tb_result8.Visibility = Visibility;
                 tb_result9.Visibility = Visibility;
                 tb_result10.Visibility = Visibility;
-                tb_result10.Text = "(" + Math.Round(p, 2) + ";" + Math.Round(q, 2) + ")";
-                tb_result8.Text = "(" + Math.Round(x1, 2) + ";" + "0)";
-                tb_result9.Text = "(" + Math.Round(x2, 2) + ";" + "0)";
+                tb_result10.Text = "(" + Math.Round(wykres.p, 2) + ";" + Math.Round(wykres.q, 2) + ")";
+                tb_result8.Text = "(" + Math.Round(wykres.x1, 2) + ";" + "0)";
+                tb_result9.Text = "(" + Math.Round(wykres.x2, 2) + ";" + "0)";
             }
-            if (a < 0 & obl_delta > 0)
+            if (wykres.a < 0 & wykres.obl_delta > 0)
             {
                 wykres2.Visibility = Visibility;
                 tb_result11.Visibility = Visibility;
                 tb_result8.Visibility = Visibility;
                 tb_result9.Visibility = Visibility;
-                tb_result11.Text = "(" + Math.Round(p, 2) + ";" + Math.Round(q, 2) + ")";
-                tb_result8.Text = "(" + Math.Round(x1, 2) + ";" + "0)";
-                tb_result9.Text = "(" + Math.Round(x2, 2) + ";" + "0)";
+                tb_result11.Text = "(" + Math.Round(wykres.p, 2) + ";" + Math.Round(wykres.q, 2) + ")";
+                tb_result8.Text = "(" + Math.Round(wykres.x1, 2) + ";" + "0)";
+                tb_result9.Text = "(" + Math.Round(wykres.x2, 2) + ";" + "0)";
             }
-            if (a < 0 & obl_delta < 0)
+            if (wykres.a < 0 & wykres.obl_delta < 0)
             {
                 wykres3.Visibility = Visibility;
                 tb_result11.Visibility = Visibility;
-                tb_result11.Text = "(" + Math.Round(p, 2) + ";" + Math.Round(q, 2) + ")";
+                tb_result11.Text = "(" + Math.Round(wykres.p, 2) + ";" + Math.Round(wykres.q, 2) + ")";
             }
-            if (a > 0 & obl_delta < 0)
+            if (wykres.a > 0 & wykres.obl_delta < 0)
             {
                 wykres4.Visibility = Visibility;
                 tb_result10.Visibility = Visibility;
-                tb_result10.Text = "(" + Math.Round(p, 2) + ";" + Math.Round(q, 2) + ")";
+                tb_result10.Text = "(" + Math.Round(wykres.p, 2) + ";" + Math.Round(wykres.q, 2) + ")";
             }
 
             wykres_btn.IsEnabled = false;
@@ -115,6 +126,7 @@ namespace Kalkulator_wsiz
 
         private void draw_btn_Click(object sender, RoutedEventArgs e)
         {
+            Funkcje obiekt2 = new Funkcje();
             if (tb_a.Text == "a" | tb_b.Text == "b" | tb_c.Text == "c")
             {
                 tb_a.Text = string.Empty;
@@ -141,16 +153,10 @@ namespace Kalkulator_wsiz
 
 
             wyczysc_btn.Visibility = Visibility;
-            double a = Convert.ToDouble(tb_a.Text);
-            double b = Convert.ToDouble(tb_b.Text);
-            double c = Convert.ToDouble(tb_c.Text);
-            double obl_delta;//delta
-            double x1;//miejsce zerowe1
-            double x2;//miejsce zerowe2
-            double p;//wierzchołek funkcji
-            double q;//wierzchołek funkcji
-            double zw1;//zbiór wartości, delta > 0
-            double zw2;//zbiór wartości, delta < 0
+            obiekt2.a = Convert.ToDouble(tb_a.Text);
+            obiekt2.b = Convert.ToDouble(tb_b.Text);
+            obiekt2.c = Convert.ToDouble(tb_c.Text);
+          
 
             tb_result.Text = string.Empty;
             tb_result2.Text = string.Empty;
@@ -169,62 +175,62 @@ namespace Kalkulator_wsiz
 
 
             //Warunek dla istnienia funkcji kwadratowej
-            if (a != 0)
+            if (obiekt2.a != 0)
             {
-                obl_delta = (b * b) - 4 * a * c;
+                obiekt2.obl_delta = (obiekt2.b * obiekt2.b) - 4 * obiekt2.a * obiekt2.c;
 
-                tb_result.Text = "Δ = " + Math.Round(obl_delta, 2).ToString();
+                tb_result.Text = "Δ = " + Math.Round(obiekt2.obl_delta, 2).ToString();
                 //Delta = 0
-                if (obl_delta == 0)
+                if (obiekt2.obl_delta == 0)
                 {
-                    x1 = x2 = -b / (2 * a);
-                    tb_result2.Text = "Δ równa 0: \nx1 wynosi : " + Math.Round(x1, 2);
+                    obiekt2.x1 = obiekt2.x2 = -obiekt2.b / (2 * obiekt2.a);
+                    tb_result2.Text = "Δ równa 0: \nx1 wynosi : " + Math.Round(obiekt2.x1, 2);
 
                 }
                 //Delta > 0
-                else if (obl_delta > 0)
+                else if (obiekt2.obl_delta > 0)
                 {
-                    x1 = (-b - Math.Sqrt(obl_delta)) / (2 * a);
-                    x2 = (-b + Math.Sqrt(obl_delta)) / (2 * a);
-                    tb_result2.Text = "Δ większa od 0: \nx1: " + Math.Round(x1, 2) + "\nx2: " + Math.Round(x2, 2);
+                    obiekt2.x1 = (-obiekt2.b - Math.Sqrt(obiekt2.obl_delta)) / (2 * obiekt2.a);
+                    obiekt2.x2 = (-obiekt2.b + Math.Sqrt(obiekt2.obl_delta)) / (2 * obiekt2.a);
+                    tb_result2.Text = "Δ większa od 0: \nx1: " + Math.Round(obiekt2.x1, 2) + "\nx2: " + Math.Round(obiekt2.x2, 2);
 
                 }
                 //Delta < 0
-                else if (obl_delta < 0)
+                else if (obiekt2.obl_delta < 0)
                 {
                     tb_result2.Text = "Brak rozwiązań. Δ ujemna!";
                 }
                 //Zbiór wartości
                 {
-                    if (a > 0)
+                    if (obiekt2.a > 0)
                     {
-                        zw1 = (-obl_delta / 4 * a);
-                        tb_result3.Text = "Zbiór wartości funkcji:" + "\n(" + Math.Round(zw1, 2) + " ,+ ∞ )";
+                        obiekt2.zw1 = (-obiekt2.obl_delta / 4 * obiekt2.a);
+                        tb_result3.Text = "Zbiór wartości funkcji:" + "\n(" + Math.Round(obiekt2.zw1, 2) + " ,+ ∞ )";
                     }
-                    else if (a < 0)
+                    else if (obiekt2.a < 0)
                     {
-                        zw2 = (-obl_delta / 4 * a);
-                        tb_result3.Text = "Zbiór wartości funkcji:" + "\n(- ∞, " + Math.Round(zw2, 2) + ")";
+                        obiekt2.zw2 = (-obiekt2.obl_delta / 4 * obiekt2.a);
+                        tb_result3.Text = "Zbiór wartości funkcji:" + "\n(- ∞, " + Math.Round(obiekt2.zw2, 2) + ")";
                     }
                 }
 
                 // Wierzchołek paraboli
-                p = ((-b) / (2 * a));
-                q = ((-obl_delta) / (4 * a));
-                tb_result4.Text = "p = " + Math.Round(p, 2) + " , q = " + Math.Round(q, 2) + ", W = (" + Math.Round(p, 2) + ";" + Math.Round(q, 2) + ")";
+                obiekt2.p = ((-obiekt2.b) / (2 * obiekt2.a));
+                obiekt2.q = ((-obiekt2.obl_delta) / (4 * obiekt2.a));
+                tb_result4.Text = "p = " + Math.Round(obiekt2.p, 2) + " , q = " + Math.Round(obiekt2.q, 2) + ", W = (" + Math.Round(obiekt2.p, 2) + ";" + Math.Round(obiekt2.q, 2) + ")";
 
                 // Monotoniczność funkcji
                 {
-                    if (a > 0)
+                    if (obiekt2.a > 0)
                     {
-                        tb_result5.Text = "Funkcja jest malejąca w przedziale: " + "(- ∞ ," + Math.Round(p, 2) + ")"
-                        + "\nFunkcja jest rosnąca w przedziale: " + "( " + Math.Round(p, 2) + ", + ∞)";
+                        tb_result5.Text = "Funkcja jest malejąca w przedziale: " + "(- ∞ ," + Math.Round(obiekt2.p, 2) + ")"
+                        + "\nFunkcja jest rosnąca w przedziale: " + "( " + Math.Round(obiekt2.p, 2) + ", + ∞)";
 
                     }
                     else
                     {
-                        tb_result5.Text = "Funkcja jest rosnąca w przedziale: " + "(-∞ ," + Math.Round(p, 2) + ")"
-                        + "\nFunkcja jest malejąca w przedziale: " + "( " + Math.Round(p, 2) + ", + ∞)";
+                        tb_result5.Text = "Funkcja jest rosnąca w przedziale: " + "(-∞ ," + Math.Round(obiekt2.p, 2) + ")"
+                        + "\nFunkcja jest malejąca w przedziale: " + "( " + Math.Round(obiekt2.p, 2) + ", + ∞)";
 
 
                     }
@@ -232,93 +238,93 @@ namespace Kalkulator_wsiz
 
                 //Dziedzina Funkcji
                 {
-                    if (a > 0)
+                    if (obiekt2.a > 0)
                     {
-                        tb_result6.Text = "Dziedzina funkcji: " + "\n( " + Math.Round(q, 2) + ", + ∞)";
+                        tb_result6.Text = "Dziedzina funkcji: " + "\n( " + Math.Round(obiekt2.q, 2) + ", + ∞)";
                     }
                     else
                     {
-                        tb_result6.Text = "Dziedzina funkcji: " + "\n(- ∞ ," + Math.Round(q, 2) + ")";
+                        tb_result6.Text = "Dziedzina funkcji: " + "\n(- ∞ ," + Math.Round(obiekt2.q, 2) + ")";
 
                     }
                 }
 
 
                 //Postacie funkcji dla delty równej 0
-                if (obl_delta == 0)
+                if (obiekt2.obl_delta == 0)
                 {
 
-                    if ((x1 = x2 = -b / (2 * a)) < 0)
+                    if ((obiekt2.x1 = obiekt2.x2 = -obiekt2.b / (2 * obiekt2.a)) < 0)
                     {
 
-                        tb_result7.Text = "Postać iloczynowa: " + a + "(x + " + (-1) * x1 + ")^2" + "\nPostać kanoniczna: " + a + "(x " + p + ") + " + q +
-                             "\nPostać ogólna: " + a + "x^2 + " + b + "x + " + c;
+                        tb_result7.Text = "Postać iloczynowa: " + obiekt2.a + "(x + " + (-1) * obiekt2.x1 + ")^2" + "\nPostać kanoniczna: " + obiekt2.a + "(x " + obiekt2.p + ") + " + obiekt2.q +
+                             "\nPostać ogólna: " + obiekt2.a + "x^2 + " + obiekt2.b + "x + " + obiekt2.c;
 
                     }
                     else
                     {
 
-                        tb_result7.Text = "Postać iloczynowa: " + a + "(x " + (-1) * x1 + ")^2" + "\nPostać kanoniczna: " + a + "(x + " + p + ") + " + q +
-                             "\nPostać ogólna: " + a + "x^2 + " + b + "x + " + c;
+                        tb_result7.Text = "Postać iloczynowa: " + obiekt2.a + "(x " + (-1) * obiekt2.x1 + ")^2" + "\nPostać kanoniczna: " + obiekt2.a + "(x + " + obiekt2.p + ") + " + obiekt2.q +
+                             "\nPostać ogólna: " + obiekt2.a + "x^2 + " + obiekt2.b + "x + " + obiekt2.c;
 
                     }
                 }
                 //Postacie funckji dla dlety większej od 0
-                if (obl_delta > 0)
+                if (obiekt2.obl_delta > 0)
                 {
-                    x1 = (-b - Math.Sqrt(obl_delta)) / (2 * a);
-                    x2 = (-b + Math.Sqrt(obl_delta)) / (2 * a);
+                    obiekt2.x1 = (-obiekt2.b - Math.Sqrt(obiekt2.obl_delta)) / (2 * obiekt2.a);
+                    obiekt2.x2 = (-obiekt2.b + Math.Sqrt(obiekt2.obl_delta)) / (2 * obiekt2.a);
 
-                    if (x1 > 0 & x2 > 0 & p >= 0 & q >= 0)
+                    if (obiekt2.x1 > 0 & obiekt2.x2 > 0 & obiekt2.p >= 0 & obiekt2.q >= 0)
                     {
-                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(a, 2) + "(x -" + Math.Round(x1, 2) + ")*(x - " + Math.Round(x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(a, 2) + "(x " + Math.Round(p, 2) + ") + " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 + " + Math.Round(b, 2) + "x + " + Math.Round(c, 2);
+                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(obiekt2.a, 2) + "(x -" + Math.Round(obiekt2.x1, 2) + ")*(x - " + Math.Round(obiekt2.x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(obiekt2.a, 2) + "(x " + Math.Round(obiekt2.p, 2) + ") + " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 + " + Math.Round(obiekt2.b, 2) + "x + " + Math.Round(obiekt2.c, 2);
                     }
-                    if (x1 < 0 & x2 < 0 & p < 0 & q < 0)
+                    if (obiekt2.x1 < 0 & obiekt2.x2 < 0 & obiekt2.p < 0 & obiekt2.q < 0)
                     {
-                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(a, 2) + "(x " + Math.Round(-x1, 2) + ")*(x + " + Math.Round(-x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(a, 2) + "(x + " + Math.Round(-p, 2) + ")  " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 + " + Math.Round(b, 2) + "x + " + Math.Round(c, 2);
+                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(obiekt2.a, 2) + "(x " + Math.Round(-obiekt2.x1, 2) + ")*(x + " + Math.Round(-obiekt2.x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(obiekt2.a, 2) + "(x + " + Math.Round(-obiekt2.p, 2) + ")  " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 + " + Math.Round(obiekt2.b, 2) + "x + " + Math.Round(obiekt2.c, 2);
                     }
-                    if (x1 > 0 & x2 < 0 & p < 0 & q < 0)
+                    if (obiekt2.x1 > 0 & obiekt2.x2 < 0 & obiekt2.p < 0 & obiekt2.q < 0)
                     {
-                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(a, 2) + "(x " + Math.Round(-x1, 2) + ")*(x + " + Math.Round(-x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(a, 2) + "(x + " + Math.Round(-p, 2) + ")  " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 + " + Math.Round(b, 2) + "x + " + Math.Round(c, 2);
+                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(obiekt2.a, 2) + "(x " + Math.Round(-obiekt2.x1, 2) + ")*(x + " + Math.Round(-obiekt2.x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(obiekt2.a, 2) + "(x + " + Math.Round(-obiekt2.p, 2) + ")  " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 + " + Math.Round(obiekt2.b, 2) + "x + " + Math.Round(obiekt2.c, 2);
                     }
-                    if (x1 < 0 & x2 > 0 & p < 0 & q < 0)
+                    if (obiekt2.x1 < 0 & obiekt2.x2 > 0 & obiekt2.p < 0 & obiekt2.q < 0)
                     {
-                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(a, 2) + "(x +" + Math.Round(-x1, 2) + ")*(x " + Math.Round(-x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(a, 2) + "(x + " + Math.Round(-p, 2) + ")  " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 + " + Math.Round(b, 2) + "x " + Math.Round(c, 2);
+                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(obiekt2.a, 2) + "(x +" + Math.Round(-obiekt2.x1, 2) + ")*(x " + Math.Round(-obiekt2.x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(obiekt2.a, 2) + "(x + " + Math.Round(-obiekt2.p, 2) + ")  " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 + " + Math.Round(obiekt2.b, 2) + "x " + Math.Round(obiekt2.c, 2);
                     }
-                    if (x1 > 0 & x2 < 0 & p > 0 & q < 0)
+                    if (obiekt2.x1 > 0 & obiekt2.x2 < 0 & obiekt2.p > 0 & obiekt2.q < 0)
                     {
-                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(a, 2) + "(x " + Math.Round(-x1, 2) + ")*(x " + Math.Round(-x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(a, 2) + "(x + " + Math.Round(-p, 2) + ")  " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 + " + Math.Round(b, 2) + "x " + Math.Round(c, 2);
+                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(obiekt2.a, 2) + "(x " + Math.Round(-obiekt2.x1, 2) + ")*(x " + Math.Round(-obiekt2.x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(obiekt2.a, 2) + "(x + " + Math.Round(-obiekt2.p, 2) + ")  " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 + " + Math.Round(obiekt2.b, 2) + "x " + Math.Round(obiekt2.c, 2);
                     }
-                    if (x1 > 0 & x2 < 0 & p > 0 & q > 0)
+                    if (obiekt2.x1 > 0 & obiekt2.x2 < 0 & obiekt2.p > 0 & obiekt2.q > 0)
                     {
-                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(a, 2) + "(x " + Math.Round(-x1, 2) + ")*(x + " + Math.Round(-x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(a, 2) + "(x " + Math.Round(-p, 2) + ") + " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 + " + Math.Round(b, 2) + "x + " + Math.Round(c, 2);
+                        tb_result7.Text = "Postać iloczynowa: " + Math.Round(obiekt2.a, 2) + "(x " + Math.Round(-obiekt2.x1, 2) + ")*(x + " + Math.Round(-obiekt2.x2, 2) + ")" + "\nPostać kanoniczna: " + Math.Round(obiekt2.a, 2) + "(x " + Math.Round(-obiekt2.p, 2) + ") + " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 + " + Math.Round(obiekt2.b, 2) + "x + " + Math.Round(obiekt2.c, 2);
                     }
 
 
                 }
                 // postacie funkcji dla delty mniejszej od 0
-                else if (obl_delta < 0)// brak postaci iloczynowej
+                else if (obiekt2.obl_delta < 0)// brak postaci iloczynowej
                 {
-                    if (p < 0 & b >= 0)
+                    if (obiekt2.p < 0 & obiekt2.b >= 0)
                     {
-                        tb_result7.Text = "Brak postaci iloczynowej" + "\nPostać kanoniczna: " + a + "(x " + Math.Round(p, 2) + ") + " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 +" + Math.Round(b, 2) + "x + " + Math.Round(c, 2);
+                        tb_result7.Text = "Brak postaci iloczynowej" + "\nPostać kanoniczna: " + obiekt2.a + "(x " + Math.Round(obiekt2.p, 2) + ") + " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 +" + Math.Round(obiekt2.b, 2) + "x + " + Math.Round(obiekt2.c, 2);
                     }
-                    if (p > 0)
+                    if (obiekt2.p > 0)
                     {
-                        tb_result7.Text = "Brak postaci iloczynowej" + "\nPostać kanoniczna: " + a + "(x +" + Math.Round(p, 2) + ") " + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 +" + Math.Round(b, 2) + "x " + Math.Round(c, 2);
+                        tb_result7.Text = "Brak postaci iloczynowej" + "\nPostać kanoniczna: " + obiekt2.a + "(x +" + Math.Round(obiekt2.p, 2) + ") " + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 +" + Math.Round(obiekt2.b, 2) + "x " + Math.Round(obiekt2.c, 2);
                     }
-                    if (p > 0 & b < 0)
+                    if (obiekt2.p > 0 & obiekt2.b < 0)
                     {
-                        tb_result7.Text = "Brak postaci iloczynowej" + "\nPostać kanoniczna: " + a + "(x +" + Math.Round(p, 2) + ") +" + Math.Round(q, 2) +
-                             "\nPostać ogólna: " + Math.Round(a, 2) + "x^2 " + Math.Round(b, 2) + "x +" + Math.Round(c, 2);
+                        tb_result7.Text = "Brak postaci iloczynowej" + "\nPostać kanoniczna: " + obiekt2.a + "(x +" + Math.Round(obiekt2.p, 2) + ") +" + Math.Round(obiekt2.q, 2) +
+                             "\nPostać ogólna: " + Math.Round(obiekt2.a, 2) + "x^2 " + Math.Round(obiekt2.b, 2) + "x +" + Math.Round(obiekt2.c, 2);
                     }
 
                 }
@@ -379,6 +385,7 @@ namespace Kalkulator_wsiz
                 case Key.D9:
                 case Key.Subtract:
                 case Key.OemMinus:
+                case Key.OemComma:
 
                     break;
 
