@@ -32,6 +32,12 @@ namespace Kalkulator_wsiz
 
 
     }
+    class Menu
+    {
+        public int wysokosc;
+        public int szerokosc;
+    }
+
     public partial class MainWindow : Window
     {
 
@@ -42,25 +48,34 @@ namespace Kalkulator_wsiz
         }
         private void MenuItem_Standard_Click(object sender, RoutedEventArgs e)
         {
+            Menu standardowe = new Menu();
+            standardowe.szerokosc = 400;
+            standardowe.wysokosc = 287;
             Main.Content = new Standard();
-            this.Width = 287;
-            this.Height = 400;
+            this.Width = standardowe.wysokosc;
+            this.Height = standardowe.szerokosc;
 
         }
         private void MenuItem_Scientific_Click(object sender, RoutedEventArgs e)
         {
+            Menu Naukowy = new Menu();
+            Naukowy.szerokosc = 400;
+            Naukowy.wysokosc = 400;
             Main.Content = new Naukowy();
-            this.Width = 400;
-            this.Height = 400;
+            this.Width = Naukowy.szerokosc;
+            this.Height = Naukowy.wysokosc;
 
         }
 
         private void MenuItem_Fkwad_Click(object sender, RoutedEventArgs e)
         {
 
+            Menu Naukowy = new Menu();
+            Naukowy.szerokosc = 800;
+            Naukowy.wysokosc = 550;
             Main.Content = new Funkcja();
-            this.Width = 800;
-            this.Height = 550;
+            this.Width = Naukowy.szerokosc;
+            this.Height = Naukowy.wysokosc;
 
         }
     }
