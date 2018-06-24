@@ -19,6 +19,22 @@ namespace Kalkulator_wsiz
     /// <summary>
     /// Interaction logic for Standard.xaml
     /// </summary>
+    /// 
+    class StandardowyKalkulator
+    {
+        public double i;
+        public double q;
+        public double sin;
+        public double cos;
+        public double a;
+        public double sqrt;
+        public double ilog;
+        public double sinh;
+        public double cosh;
+        public double tan;
+        public double tanh;
+
+    }
     public partial class Standard : Page
     {
         private Operation m_eLastOperationSelected = Operation.none;
@@ -139,6 +155,7 @@ namespace Kalkulator_wsiz
 
         private void ResultButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             // Nie wykonywano żadnych operacji, nie można wyliczyć wyniku
             if ((Operation.result == m_eLastOperationSelected) ||
                 (Operation.none == m_eLastOperationSelected))
@@ -171,10 +188,10 @@ namespace Kalkulator_wsiz
                     txtDisplay.Text = (double.Parse(txtDisplayMemory.Text) % double.Parse(txtDisplay.Text)).ToString();
                     break;
                 case Operation.exp:
-                    double i = Double.Parse(txtDisplay.Text);
-                    double q;
-                    q = double.Parse(txtDisplayMemory.Text);
-                    txtDisplay.Text = Math.Exp(i * Math.Log(q * 4)).ToString();
+                    obiekt.i = Double.Parse(txtDisplay.Text);
+                    
+                    obiekt.q = double.Parse(txtDisplayMemory.Text);
+                    txtDisplay.Text = Math.Exp(obiekt.i * Math.Log(obiekt.q * 4)).ToString();
                     break;
 
 
@@ -195,6 +212,7 @@ namespace Kalkulator_wsiz
 
         private void OneX_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -203,10 +221,9 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                Double a;
-                a = Convert.ToDouble(1.0 / Convert.ToDouble(txtDisplay.Text));
+                obiekt.a = Convert.ToDouble(1.0 / Convert.ToDouble(txtDisplay.Text));
                 txtDisplayOperation.Text = "reciproc" + "(" + txtDisplay.Text + ")";
-                txtDisplay.Text = System.Convert.ToString(a);
+                txtDisplay.Text = System.Convert.ToString(obiekt.a);
             }
         }
 
@@ -216,6 +233,7 @@ namespace Kalkulator_wsiz
         }
         private void Sqrt_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -224,10 +242,10 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double sqrt = Double.Parse(txtDisplay.Text);
-                sqrt = Math.Sqrt(sqrt);
+                obiekt.sqrt = Double.Parse(txtDisplay.Text);
+                obiekt.sqrt = Math.Sqrt(obiekt.sqrt);
                 txtDisplayOperation.Text = ("Sqrt" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = sqrt.ToString();
+                txtDisplay.Text = obiekt.sqrt.ToString();
 
             }
 
@@ -235,21 +253,22 @@ namespace Kalkulator_wsiz
 
         private void Pos_Neg_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             if (txtDisplay.Text != string.Empty)
             {
                 if ((txtDisplay.Text.Contains('-')) ||
                     (0 == txtDisplay.Text.Length))
                 {
-                    double a = Convert.ToDouble(txtDisplay.Text);
-                    a = a * (-1);
-                    txtDisplay.Text = a.ToString();
+                    obiekt.a = Convert.ToDouble(txtDisplay.Text);
+                    obiekt.a = obiekt.a * (-1);
+                    txtDisplay.Text = obiekt.a.ToString();
                 }
 
                 else
                 {
-                    double a = Convert.ToDouble(txtDisplay.Text);
-                    a = a * (-1);
-                    txtDisplay.Text = a.ToString();
+                    obiekt.a = Convert.ToDouble(txtDisplay.Text);
+                    obiekt.a = obiekt.a * (-1);
+                    txtDisplay.Text = obiekt.a.ToString();
                 }
 
             }
@@ -262,6 +281,7 @@ namespace Kalkulator_wsiz
 
         private void Log_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -270,10 +290,10 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double ilog = Double.Parse(txtDisplay.Text);
-                ilog = Math.Log10(ilog);
+                obiekt.ilog = Double.Parse(txtDisplay.Text);
+                obiekt.ilog = Math.Log10(obiekt.ilog);
                 txtDisplayOperation.Text = ("Log" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = ilog.ToString();
+                txtDisplay.Text = obiekt.ilog.ToString();
             }
 
         }
@@ -281,7 +301,8 @@ namespace Kalkulator_wsiz
 
         private void Sinh_Button_Click(object sender, RoutedEventArgs e)
         {
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
+           bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
                 return;
@@ -289,15 +310,16 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double sinh = Double.Parse(txtDisplay.Text);
-                sinh = Math.Sinh(sinh);
+                obiekt.sinh = Double.Parse(txtDisplay.Text);
+                obiekt.sinh = Math.Sinh(obiekt.sinh);
                 txtDisplayOperation.Text = ("Sinh" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = sinh.ToString();
+                txtDisplay.Text = obiekt.sinh.ToString();
             }
         }
 
         private void Sin_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -306,16 +328,17 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double sin = Double.Parse(txtDisplay.Text);
-                sin = Math.Sin(sin); // w radianach
+                obiekt.sin = Double.Parse(txtDisplay.Text);
+                obiekt.sin = Math.Sin(obiekt.sin); // w radianach
                 txtDisplayOperation.Text = ("Sin" + "(" + (txtDisplay.Text) + ")").ToString();
                 txtDisplayMemory.Text = "Rad.";
-                txtDisplay.Text = sin.ToString();
+                txtDisplay.Text = obiekt.sin.ToString();
             }
         }
 
         private void Cos_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -324,16 +347,17 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double cos = Double.Parse(txtDisplay.Text);
-                cos = Math.Cos(cos); // w radianach
+                obiekt.cos = Double.Parse(txtDisplay.Text);
+                obiekt.cos = Math.Cos(obiekt.cos); // w radianach
                 txtDisplayOperation.Text = ("Cos" + "(" + (txtDisplay.Text) + ")").ToString();
                 txtDisplayMemory.Text = "Rad.";
-                txtDisplay.Text = cos.ToString();
+                txtDisplay.Text = obiekt.cos.ToString();
             }
         }
 
         private void Cosh_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -342,15 +366,16 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double cosh = Double.Parse(txtDisplay.Text);
-                cosh = Math.Cosh(cosh); // w radianach
+                obiekt.cosh = Double.Parse(txtDisplay.Text);
+                obiekt.cosh = Math.Cosh(obiekt.cosh); // w radianach
                 txtDisplayOperation.Text = ("Cosh" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = cosh.ToString();
+                txtDisplay.Text = obiekt.cosh.ToString();
             }
         }
 
         private void Tanh_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -359,15 +384,16 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double tanh = Double.Parse(txtDisplay.Text);
-                tanh = Math.Tanh(tanh); // w radianach
+                obiekt.tanh = Double.Parse(txtDisplay.Text);
+                obiekt.tanh = Math.Tanh(obiekt.tanh); // w radianach
                 txtDisplayOperation.Text = ("tanh" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = tanh.ToString();
+                txtDisplay.Text = obiekt.tanh.ToString();
             }
         }
 
         private void Tan_Button_Click(object sender, RoutedEventArgs e)
         {
+            StandardowyKalkulator obiekt = new StandardowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -376,10 +402,10 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double tan = Double.Parse(txtDisplay.Text);
-                tan = Math.Tan(tan); // w radianach
+                obiekt.tan = Double.Parse(txtDisplay.Text);
+                obiekt.tan = Math.Tan(obiekt.tan); // w radianach
                 txtDisplayOperation.Text = ("tan" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = tan.ToString();
+                txtDisplay.Text = obiekt.tan.ToString();
             }
         }
         private void Bin_Button_Click(object sender, RoutedEventArgs e)
