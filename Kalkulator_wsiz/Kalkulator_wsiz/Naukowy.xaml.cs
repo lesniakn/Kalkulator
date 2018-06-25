@@ -18,7 +18,15 @@ namespace Kalkulator_wsiz
     /// <summary>
     /// Interaction logic for Naukowy.xaml
     /// </summary>
+    class NaukowyKalkulator
+    {
+        private Operation m_eLastOperationSelected = Operation.none;
+        public double a;
+        public double ilog;
+        public double sqrt;
+        public double sin;
 
+    }
 
     public partial class Naukowy : Page
     {
@@ -195,6 +203,7 @@ namespace Kalkulator_wsiz
 
         private void OneX_Button_Click(object sender, RoutedEventArgs e)
         {
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -204,9 +213,9 @@ namespace Kalkulator_wsiz
             else
             {
                 Double a;
-                a = Convert.ToDouble(1.0 / Convert.ToDouble(txtDisplay.Text));
+                obiekt.a = Convert.ToDouble(1.0 / Convert.ToDouble(txtDisplay.Text));
                 txtDisplayOperation.Text = "reciproc" + "(" + txtDisplay.Text + ")";
-                txtDisplay.Text = System.Convert.ToString(a);
+                txtDisplay.Text = System.Convert.ToString(obiekt.a);
             }
         }
 
@@ -216,6 +225,7 @@ namespace Kalkulator_wsiz
         }
         private void Sqrt_Button_Click(object sender, RoutedEventArgs e)
         {
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -224,10 +234,10 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double sqrt = Double.Parse(txtDisplay.Text);
-                sqrt = Math.Sqrt(sqrt);
+                obiekt.sqrt = Double.Parse(txtDisplay.Text);
+                obiekt.sqrt = Math.Sqrt(obiekt.sqrt);
                 txtDisplayOperation.Text = ("Sqrt" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = sqrt.ToString();
+                txtDisplay.Text = obiekt.sqrt.ToString();
 
             }
 
@@ -235,14 +245,15 @@ namespace Kalkulator_wsiz
 
         private void Pos_Neg_Button_Click(object sender, RoutedEventArgs e)
         {
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             if (txtDisplay.Text != string.Empty)
             {
                 if ((txtDisplay.Text.Contains('-')) ||
                     (0 == txtDisplay.Text.Length))
                 {
-                    double a = Convert.ToDouble(txtDisplay.Text);
-                    a = a * (-1);
-                    txtDisplay.Text = a.ToString();
+                    obiekt.a = Convert.ToDouble(txtDisplay.Text);
+                    obiekt.a = obiekt.a * (-1);
+                    txtDisplay.Text = obiekt.a.ToString();
                 }
 
                 else
@@ -262,6 +273,7 @@ namespace Kalkulator_wsiz
 
         private void Log_Button_Click(object sender, RoutedEventArgs e)
         {
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -270,10 +282,10 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double ilog = Double.Parse(txtDisplay.Text);
-                ilog = Math.Log10(ilog);
+                obiekt.ilog = Double.Parse(txtDisplay.Text);
+                obiekt.ilog = Math.Log10(obiekt.ilog);
                 txtDisplayOperation.Text = ("Log" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = ilog.ToString();
+                txtDisplay.Text = obiekt.ilog.ToString();
             }
 
         }
@@ -298,6 +310,7 @@ namespace Kalkulator_wsiz
 
         private void Sin_Button_Click(object sender, RoutedEventArgs e)
         {
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -306,11 +319,11 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                double sin = Double.Parse(txtDisplay.Text);
-                sin = Math.Sin(sin); // w radianach
+                obiekt.sin = Double.Parse(txtDisplay.Text);
+                obiekt.sin = Math.Sin(obiekt.sin); // w radianach
                 txtDisplayOperation.Text = ("Sin" + "(" + (txtDisplay.Text) + ")").ToString();
                 txtDisplayMemory.Text = "Rad.";
-                txtDisplay.Text = sin.ToString();
+                txtDisplay.Text = obiekt.sin.ToString();
             }
         }
 
@@ -445,6 +458,7 @@ namespace Kalkulator_wsiz
         }
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -453,9 +467,9 @@ namespace Kalkulator_wsiz
             }
             else
             {
-                Double a;
-                a = Convert.ToDouble(txtDisplay.Text) / Convert.ToDouble(100);
-                txtDisplay.Text = System.Convert.ToString(a);
+
+                obiekt.a = Convert.ToDouble(txtDisplay.Text) / Convert.ToDouble(100);
+                txtDisplay.Text = System.Convert.ToString(obiekt.a);
             }
         }
 
