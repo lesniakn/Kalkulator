@@ -19,6 +19,9 @@ namespace Kalkulator_wsiz
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
+    /// <summary>
+    /// Operacje
+    /// </summary>
     enum Operation
     {
         none = 0, // brak operacji
@@ -32,6 +35,9 @@ namespace Kalkulator_wsiz
 
 
     }
+    /// <summary>
+    /// Klasa menu, przechowuje wysokosc i szerokosc okna.
+    /// </summary>
     class Menu
     {
         public int wysokosc;
@@ -46,6 +52,9 @@ namespace Kalkulator_wsiz
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Funkcja wywolujaca okno kalkulatora prostego. 
+        /// </summary>
         private void MenuItem_Standard_Click(object sender, RoutedEventArgs e)
         {
             Menu standardowe = new Menu();
@@ -56,6 +65,9 @@ namespace Kalkulator_wsiz
             this.Height = standardowe.szerokosc;
 
         }
+        /// <summary>
+        /// Funkcja wywolujaca okno kalkulatora naukowego
+        /// </summary>
         private void MenuItem_Scientific_Click(object sender, RoutedEventArgs e)
         {
             Menu Naukowy = new Menu();
@@ -66,7 +78,9 @@ namespace Kalkulator_wsiz
             this.Height = Naukowy.wysokosc;
 
         }
-
+        /// <summary>
+        /// Funkcje wywolujace okno funkcji kwadratowej 
+        /// </summary>
         private void MenuItem_Fkwad_Click(object sender, RoutedEventArgs e)
         {
 

@@ -18,6 +18,10 @@ namespace Kalkulator_wsiz
     /// <summary>
     /// Interaction logic for Naukowy.xaml
     /// </summary>
+
+    /// <summary>
+    /// Klasa przechowujaca zmienne
+    /// </summary>
     class NaukowyKalkulator
     {
         private Operation m_eLastOperationSelected = Operation.none;
@@ -36,7 +40,9 @@ namespace Kalkulator_wsiz
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Funkcja void obslugujaca przyciski numeryczne 
+        /// </summary>
         private void NumberButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Operation.result == m_eLastOperationSelected)
@@ -48,6 +54,9 @@ namespace Kalkulator_wsiz
             txtDisplay.Text += oButton.Content;
         }
 
+        /// <summary>
+        /// Wstawianie przecinika
+        /// </summary>
         private void CommaButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Operation.result == m_eLastOperationSelected)
@@ -70,6 +79,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text += "0,";
             }
         }
+        /// <summary>
+        /// Przycisk wypisujący zero
+        /// </summary>
         private void ZeroButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Operation.result == m_eLastOperationSelected)
@@ -91,6 +103,9 @@ namespace Kalkulator_wsiz
             }
         }
 
+        /// <summary>
+        /// Wymazywanie
+        /// </summary>
         private void EraseButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             txtDisplay.Text = string.Empty;
@@ -98,11 +113,13 @@ namespace Kalkulator_wsiz
             txtDisplayOperation.Text = string.Empty;
             m_eLastOperationSelected = Operation.none;
         }
-
+        /// <summary>
+        /// Funkcja obslugujaca przyciski funkcyjne "+", "-", "*", "/", "mod", "exp"
+        /// </summary>
         private void OperationButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             {
-                // sprawdzenie czy poprzednia operacja jest rozna od none i od wyniku, jeśli nie to wykonać pozostałe operacje
+                /// sprawdzenie czy poprzednia operacja jest rozna od none i od wyniku, jeśli nie to wykonać pozostałe operacje
                 if ((Operation.none != m_eLastOperationSelected) || (Operation.result != m_eLastOperationSelected))
                 {
                     ResultButton_Click(this, eRoutedEventArgs);
@@ -135,7 +152,7 @@ namespace Kalkulator_wsiz
                         m_eLastOperationSelected = Operation.exp;
                         break;
 
-
+                        ///wypisywanie bledu
                     default:
                         MessageBox.Show("Nieznana operacja!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
@@ -145,10 +162,12 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = string.Empty;
             }
         }
-
+        /// <summary>
+        /// Funkcja przycisku rownosci
+        /// </summary>
         private void ResultButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
-            // Nie wykonywano żadnych operacji, nie można wyliczyć wyniku
+            /// Nie wykonywano żadnych operacji, nie można wyliczyć wyniku
             if ((Operation.result == m_eLastOperationSelected) ||
                 (Operation.none == m_eLastOperationSelected))
             {
@@ -192,7 +211,9 @@ namespace Kalkulator_wsiz
             txtDisplayOperation.Text = string.Empty;
             txtDisplayMemory.Text = string.Empty;
         }
-
+        /// <summary>
+        /// Cofanie
+        /// </summary>
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
         {
             if (txtDisplay.Text.Length > 0)
@@ -200,9 +221,13 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = txtDisplay.Text.Remove(txtDisplay.Text.Length - 1, 1);
             }
         }
-
+        /// <summary>
+        /// Zamiana liczby na liczbe odwrotna
+        /// </summary>
         private void OneX_Button_Click(object sender, RoutedEventArgs e)
         {
+
+            /// tworzenie onowego obiektu kalkulator
             NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
@@ -218,11 +243,16 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = System.Convert.ToString(obiekt.a);
             }
         }
-
+        /// <summary>
+        /// Wyczyszczenie textboxow 
+        /// </summary>
         private void CleartxtDisplay_Button_Click(object sender, RoutedEventArgs e)
         {
             txtDisplay.Text = string.Empty;
         }
+        /// <summary>
+        /// Funkcja pierwiastkujaca
+        /// </summary>
         private void Sqrt_Button_Click(object sender, RoutedEventArgs e)
         {
             NaukowyKalkulator obiekt = new NaukowyKalkulator();
@@ -242,7 +272,9 @@ namespace Kalkulator_wsiz
             }
 
         }
-
+        /// <summary>
+        /// Zamiana znaku liczby
+        /// </summary>
         private void Pos_Neg_Button_Click(object sender, RoutedEventArgs e)
         {
             NaukowyKalkulator obiekt = new NaukowyKalkulator();
@@ -270,7 +302,9 @@ namespace Kalkulator_wsiz
             }
 
         }
-
+        /// <summary>
+        /// Funkcja wykonujaca wyliczenie logarytmu z liczby
+        /// </summary>
         private void Log_Button_Click(object sender, RoutedEventArgs e)
         {
             NaukowyKalkulator obiekt = new NaukowyKalkulator();
@@ -290,6 +324,9 @@ namespace Kalkulator_wsiz
 
         }
 
+        /// <summary>
+        /// Funkcja obslugujaca przycisk Sinh
+        /// </summary>
 
         private void Sinh_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -307,7 +344,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = sinh.ToString();
             }
         }
-
+        /// <summary>
+        /// Obliczanie sinusa
+        /// </summary>
         private void Sin_Button_Click(object sender, RoutedEventArgs e)
         {
             NaukowyKalkulator obiekt = new NaukowyKalkulator();
@@ -326,7 +365,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = obiekt.sin.ToString();
             }
         }
-
+        /// <summary>
+        /// Obliczanie cosinusa
+        /// </summary>
         private void Cos_Button_Click(object sender, RoutedEventArgs e)
         {
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
@@ -378,7 +419,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = tanh.ToString();
             }
         }
-
+        /// <summary>
+        /// Obliczanie tangensa
+        /// </summary>
         private void Tan_Button_Click(object sender, RoutedEventArgs e)
         {
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
@@ -395,6 +438,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = tan.ToString();
             }
         }
+        /// <summary>
+        /// Zamiana liczby w system binarny
+        /// </summary>
         private void Bin_Button_Click(object sender, RoutedEventArgs e)
         {
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
@@ -409,7 +455,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = System.Convert.ToString(a, 2);
             }
         }
-
+        /// <summary>
+        /// Zamiana liczby na system szesnastkowy
+        /// </summary>
         private void Hex_Button_Click(object sender, RoutedEventArgs e)
         {
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
@@ -439,6 +487,10 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = System.Convert.ToString(a, 8);
             }
         }
+
+        /// <summary>
+        /// Podnoszenie liczby do potegi 2
+        /// </summary>
         private void x2_Button_Click(object sender, RoutedEventArgs e)
         {
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
@@ -456,6 +508,9 @@ namespace Kalkulator_wsiz
             }
 
         }
+        /// <summary>
+        /// zamiana liczby na procent
+        /// </summary>
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
             NaukowyKalkulator obiekt = new NaukowyKalkulator();
@@ -472,7 +527,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = System.Convert.ToString(obiekt.a);
             }
         }
-
+        /// <summary>
+        /// Dodanie liczby PI
+        /// </summary>
         private void PI_Button_Click(object sender, RoutedEventArgs e)
         {
             txtDisplay.Text = Math.PI.ToString();

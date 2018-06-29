@@ -24,16 +24,8 @@ namespace Kalkulator_wsiz
     {
         public double i;
         public double q;
-        public double sin;
-        public double cos;
         public double a;
         public double sqrt;
-        public double ilog;
-        public double sinh;
-        public double cosh;
-        public double tan;
-        public double tanh;
-
     }
     public partial class Standard : Page
     {
@@ -43,7 +35,9 @@ namespace Kalkulator_wsiz
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// Funkcja void obslugujaca przyciski numeryczne 
+        /// </summary>
         private void NumberButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Operation.result == m_eLastOperationSelected)
@@ -55,6 +49,9 @@ namespace Kalkulator_wsiz
             txtDisplay.Text += oButton.Content;
         }
 
+        /// <summary>
+        /// Wstawianie przecinika
+        /// </summary>
         private void CommaButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Operation.result == m_eLastOperationSelected)
@@ -77,6 +74,9 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text += "0,";
             }
         }
+        /// <summary>
+        /// Przycisk wypisujący zero
+        /// </summary>
         private void ZeroButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             if (Operation.result == m_eLastOperationSelected)
@@ -98,6 +98,9 @@ namespace Kalkulator_wsiz
             }
         }
 
+        /// <summary>
+        /// Wymazywanie
+        /// </summary>
         private void EraseButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             txtDisplay.Text = string.Empty;
@@ -105,11 +108,13 @@ namespace Kalkulator_wsiz
             txtDisplayOperation.Text = string.Empty;
             m_eLastOperationSelected = Operation.none;
         }
-
+        /// <summary>
+        /// Funkcja obslugujaca przyciski funkcyjne "+", "-", "*", "/", "mod", "exp"
+        /// </summary>
         private void OperationButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
             {
-                // sprawdzenie czy poprzednia operacja jest rozna od none i od wyniku, jeśli nie to wykonać pozostałe operacje
+                /// sprawdzenie czy poprzednia operacja jest rozna od none i od wyniku, jeśli nie to wykonać pozostałe operacje
                 if ((Operation.none != m_eLastOperationSelected) || (Operation.result != m_eLastOperationSelected))
                 {
                     ResultButton_Click(this, eRoutedEventArgs);
@@ -142,7 +147,7 @@ namespace Kalkulator_wsiz
                         m_eLastOperationSelected = Operation.exp;
                         break;
 
-
+                    ///wypisywanie bledu
                     default:
                         MessageBox.Show("Nieznana operacja!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
@@ -152,11 +157,12 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = string.Empty;
             }
         }
-
+        /// <summary>
+        /// Funkcja przycisku rownosci
+        /// </summary>
         private void ResultButton_Click(object oSender, RoutedEventArgs eRoutedEventArgs)
         {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            // Nie wykonywano żadnych operacji, nie można wyliczyć wyniku
+            /// Nie wykonywano żadnych operacji, nie można wyliczyć wyniku
             if ((Operation.result == m_eLastOperationSelected) ||
                 (Operation.none == m_eLastOperationSelected))
             {
@@ -188,10 +194,10 @@ namespace Kalkulator_wsiz
                     txtDisplay.Text = (double.Parse(txtDisplayMemory.Text) % double.Parse(txtDisplay.Text)).ToString();
                     break;
                 case Operation.exp:
-                    obiekt.i = Double.Parse(txtDisplay.Text);
-                    
-                    obiekt.q = double.Parse(txtDisplayMemory.Text);
-                    txtDisplay.Text = Math.Exp(obiekt.i * Math.Log(obiekt.q * 4)).ToString();
+                    double i = Double.Parse(txtDisplay.Text);
+                    double q;
+                    q = double.Parse(txtDisplayMemory.Text);
+                    txtDisplay.Text = Math.Exp(i * Math.Log(q * 4)).ToString();
                     break;
 
 
@@ -200,7 +206,9 @@ namespace Kalkulator_wsiz
             txtDisplayOperation.Text = string.Empty;
             txtDisplayMemory.Text = string.Empty;
         }
-
+        /// <summary>
+        /// Cofanie
+        /// </summary>
         private void BackspaceButton_Click(object sender, RoutedEventArgs e)
         {
             if (txtDisplay.Text.Length > 0)
@@ -208,11 +216,14 @@ namespace Kalkulator_wsiz
                 txtDisplay.Text = txtDisplay.Text.Remove(txtDisplay.Text.Length - 1, 1);
             }
         }
-
-
+        /// <summary>
+        /// Zamiana liczby na liczbe odwrotna
+        /// </summary>
         private void OneX_Button_Click(object sender, RoutedEventArgs e)
         {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
+
+            /// tworzenie onowego obiektu kalkulator
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -221,19 +232,25 @@ namespace Kalkulator_wsiz
             }
             else
             {
+                Double a;
                 obiekt.a = Convert.ToDouble(1.0 / Convert.ToDouble(txtDisplay.Text));
                 txtDisplayOperation.Text = "reciproc" + "(" + txtDisplay.Text + ")";
                 txtDisplay.Text = System.Convert.ToString(obiekt.a);
             }
         }
-
+        /// <summary>
+        /// Wyczyszczenie textboxow 
+        /// </summary>
         private void CleartxtDisplay_Button_Click(object sender, RoutedEventArgs e)
         {
             txtDisplay.Text = string.Empty;
         }
+        /// <summary>
+        /// Funkcja pierwiastkujaca
+        /// </summary>
         private void Sqrt_Button_Click(object sender, RoutedEventArgs e)
         {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
             if (empty == true)
             {
@@ -250,10 +267,12 @@ namespace Kalkulator_wsiz
             }
 
         }
-
+        /// <summary>
+        /// Zamiana znaku liczby
+        /// </summary>
         private void Pos_Neg_Button_Click(object sender, RoutedEventArgs e)
         {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
+            NaukowyKalkulator obiekt = new NaukowyKalkulator();
             if (txtDisplay.Text != string.Empty)
             {
                 if ((txtDisplay.Text.Contains('-')) ||
@@ -266,9 +285,9 @@ namespace Kalkulator_wsiz
 
                 else
                 {
-                    obiekt.a = Convert.ToDouble(txtDisplay.Text);
-                    obiekt.a = obiekt.a * (-1);
-                    txtDisplay.Text = obiekt.a.ToString();
+                    double a = Convert.ToDouble(txtDisplay.Text);
+                    a = a * (-1);
+                    txtDisplay.Text = a.ToString();
                 }
 
             }
@@ -279,196 +298,6 @@ namespace Kalkulator_wsiz
 
         }
 
-        private void Log_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.ilog = Double.Parse(txtDisplay.Text);
-                obiekt.ilog = Math.Log10(obiekt.ilog);
-                txtDisplayOperation.Text = ("Log" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = obiekt.ilog.ToString();
-            }
-
-        }
-
-
-        private void Sinh_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-           bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.sinh = Double.Parse(txtDisplay.Text);
-                obiekt.sinh = Math.Sinh(obiekt.sinh);
-                txtDisplayOperation.Text = ("Sinh" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = obiekt.sinh.ToString();
-            }
-        }
-
-        private void Sin_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.sin = Double.Parse(txtDisplay.Text);
-                obiekt.sin = Math.Sin(obiekt.sin); // w radianach
-                txtDisplayOperation.Text = ("Sin" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplayMemory.Text = "Rad.";
-                txtDisplay.Text = obiekt.sin.ToString();
-            }
-        }
-
-        private void Cos_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.cos = Double.Parse(txtDisplay.Text);
-                obiekt.cos = Math.Cos(obiekt.cos); // w radianach
-                txtDisplayOperation.Text = ("Cos" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplayMemory.Text = "Rad.";
-                txtDisplay.Text = obiekt.cos.ToString();
-            }
-        }
-
-        private void Cosh_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.cosh = Double.Parse(txtDisplay.Text);
-                obiekt.cosh = Math.Cosh(obiekt.cosh); // w radianach
-                txtDisplayOperation.Text = ("Cosh" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = obiekt.cosh.ToString();
-            }
-        }
-
-        private void Tanh_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.tanh = Double.Parse(txtDisplay.Text);
-                obiekt.tanh = Math.Tanh(obiekt.tanh); // w radianach
-                txtDisplayOperation.Text = ("tanh" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = obiekt.tanh.ToString();
-            }
-        }
-
-        private void Tan_Button_Click(object sender, RoutedEventArgs e)
-        {
-            StandardowyKalkulator obiekt = new StandardowyKalkulator();
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                obiekt.tan = Double.Parse(txtDisplay.Text);
-                obiekt.tan = Math.Tan(obiekt.tan); // w radianach
-                txtDisplayOperation.Text = ("tan" + "(" + (txtDisplay.Text) + ")").ToString();
-                txtDisplay.Text = obiekt.tan.ToString();
-            }
-        }
-        private void Bin_Button_Click(object sender, RoutedEventArgs e)
-        {
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                int a = int.Parse(txtDisplay.Text);
-                txtDisplay.Text = System.Convert.ToString(a, 2);
-            }
-        }
-
-        private void Hex_Button_Click(object sender, RoutedEventArgs e)
-        {
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                int a = int.Parse(txtDisplay.Text);
-                txtDisplay.Text = System.Convert.ToString(a, 16);
-            }
-        }
-
-        private void Oct_Button_Click(object sender, RoutedEventArgs e)
-        {
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                int a = int.Parse(txtDisplay.Text);
-                txtDisplay.Text = System.Convert.ToString(a, 8);
-            }
-        }
-        private void x2_Button_Click(object sender, RoutedEventArgs e)
-        {
-            bool empty = String.IsNullOrEmpty(txtDisplay.Text);
-            if (empty == true)
-            {
-                return;
-
-            }
-            else
-            {
-                Double a;
-                a = Convert.ToDouble(txtDisplay.Text) * Convert.ToDouble(txtDisplay.Text);
-                txtDisplayOperation.Text = txtDisplay.Text + "*" + txtDisplay.Text;
-                txtDisplay.Text = System.Convert.ToString(a);
-            }
-
-        }
         private void PercentButton_Click(object sender, RoutedEventArgs e)
         {
             bool empty = String.IsNullOrEmpty(txtDisplay.Text);
@@ -483,11 +312,6 @@ namespace Kalkulator_wsiz
                 a = Convert.ToDouble(txtDisplay.Text) / Convert.ToDouble(100);
                 txtDisplay.Text = System.Convert.ToString(a);
             }
-        }
-
-        private void PI_Button_Click(object sender, RoutedEventArgs e)
-        {
-            txtDisplay.Text = Math.PI.ToString();
         }
     }
 }
