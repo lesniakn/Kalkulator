@@ -155,7 +155,7 @@
 
 
         </Rectangle>
-        <TextBox x:Name="tb_result8" HorizontalAlignment="Left" Height="20" Margin="440,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden">
+        <TextBox x:Name="tb_result8" HorizontalAlignment="Left" Height="20" Margin="422,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden" TextAlignment="Center">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -165,7 +165,7 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBox x:Name="tb_result9" HorizontalAlignment="Left" Height="22" Margin="643,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden"  >
+        <TextBox x:Name="tb_result9" HorizontalAlignment="Left" Height="22" Margin="683,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden" TextAlignment="Center"  >
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -175,7 +175,7 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <TextBox x:Name="tb_result10" HorizontalAlignment="Left" Height="20" Margin="538,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden">
+        <TextBox x:Name="tb_result10" HorizontalAlignment="Left" Height="20" Margin="547,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden" TextAlignment="Center">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -185,8 +185,8 @@
                 </TransformGroup>
             </TextBox.RenderTransform>
         </TextBox>
-        <Label x:Name="label" Content="Poglądowy wykres funkcji kwadratowej" HorizontalAlignment="Left" Height="29" Margin="473,70,0,0" VerticalAlignment="Top" Width="258" Visibility="Hidden"/>
-        <TextBox x:Name="tb_result11" HorizontalAlignment="Left" Height="20" Margin="546,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden">
+        <Label x:Name="label" Content="Poglądowy wykres funkcji kwadratowej" HorizontalAlignment="Left" Height="29" Margin="458,34,0,0" VerticalAlignment="Top" Width="258" Visibility="Hidden"/>
+        <TextBox x:Name="tb_result11" HorizontalAlignment="Left" Height="20" Margin="546,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" RenderTransformOrigin="0.5,0.5" IsEnabled="False" Visibility="Hidden" TextAlignment="Center">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
