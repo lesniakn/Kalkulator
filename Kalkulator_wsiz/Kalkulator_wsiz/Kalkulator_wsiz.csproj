@@ -50,7 +50,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-    <ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -77,9 +78,11 @@
     <Compile Include="Naukowy.xaml.cs">
       <DependentUpon>Naukowy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Operations.cs" />
     <Compile Include="Standard.xaml.cs">
       <DependentUpon>Standard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tests.cs" />
     <Page Include="Funkcja.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +153,9 @@
     <Resource Include="Wykresy\wykres2.jpg" />
     <Resource Include="Wykresy\wykres3.jpg" />
     <Resource Include="Wykresy\wykres4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

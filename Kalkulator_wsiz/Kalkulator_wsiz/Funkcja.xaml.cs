@@ -5,6 +5,23 @@ using System.Windows.Input;
 
 namespace Kalkulator_wsiz
 {
+    /**
+* <p>
+* Klasa Funckej przechowujaca zmienne 
+* </p>
+* <param name="a">Zmienna a przechowujaca wspolczynnik kierunkowy funkcji kwadratowej</param>
+* <param name="b">Zmienna b przechowujaca parametr b </param>
+* <param name="c">Zmienna c przechowujaca wyraz wolny</param>
+* <param name="obl_delta">Zmienna przechowujaca obliczona delte</param>
+* <param name="x1">Zmienna przechowujaca wartosc miejsca zerowego x1</param>
+* <param name="x2">Zmienna przechowujaca wartosc miejsca zerowego x1</param>
+* <param name="p">Zmienna przechowujaca wspolrzedne X wierzcholka funkcji</param>
+* <param name="q">Zmienna przechowujaca wspolrzedne Y wierzcholka funkcji</param>
+* <param name="zw1">Zmienna przechowujaca zbior wartosci funkcji dla delty wiekszej od 0</param>
+* <param name="zw2">Zmienna przechowujaca zbior wartosci funkcji dla delty mniejszej od 0</param>
+* @return Wszystkie pola puste 
+*/
+
     class Funkcje
     {
         public double a;
@@ -22,6 +39,7 @@ namespace Kalkulator_wsiz
     /// <summary>
     /// Interaction logic for Page1.xaml
     /// </summary>
+
     public partial class Funkcja : Page
     {
         public Funkcja()
@@ -35,6 +53,22 @@ namespace Kalkulator_wsiz
             (sender as TextBox).Clear();
 
         }
+        /**
+ * <p>
+ * Funkcja obslugujaca przycisk usuwania wszystkich danych z interfejsu 
+ * </p>
+ * <param name="tb_a.Text">Pole tekstowe a</param>
+ * <param name="tb_b.Text">Pole tekstowe b</param>
+ * <param name="tb_c.Text">Pole tekstowe c</param>
+ * <param name="tb_result.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result1.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result2.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result3.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result4.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result5.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result6.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * @return Wszystkie pola puste 
+*/
         private void Delete_btn_Click(object senders, RoutedEventArgs e)
         {
 
@@ -71,13 +105,30 @@ namespace Kalkulator_wsiz
 
 
         }
+        /**
+ * <p>
+ * Funkcja obslugujaca przycisk obliczający wszystkie dane i generujacy wykres
+ * </p>
+ * <param name="wykres.a">Zmienna a</param>
+ * <param name="wykres.b">Zmienna b</param>
+ * <param name="wykres.c">Zmienna c</param>
+ * <param name="wykres.obl_delta">Zmienna zachowujaca obliczona delte</param>
+ * <param name="wykres.p">Zmienna przechowujaca wspolrzedna X wierzcholka </param>
+ * <param name="wykres.p">Zmienna przechowujaca wspolrzedna Y wierzcholka</param>
+ * <param name="wykres.x1">Zmienna w ktorej znajduje sie obliczone miejsce zerowe x1</param>
+ * <param name="wykres.x2t">Zmienna w ktorej znajduje sie obliczone miejsce zerowe x2</param>
+ * <param name="tb_result5.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result6.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * @return Wyswietla pogladowy wykres i obliczone wierzcholki i miejsca zerowe 
+*/
+
         private void wykres_btn_Click(object sender, RoutedEventArgs e)
         {
             Funkcje wykres = new Funkcje();
             wykres.a = Convert.ToDouble(tb_a.Text);
             wykres.b = Convert.ToDouble(tb_b.Text);
             wykres.c = Convert.ToDouble(tb_c.Text);
-
+           ///Obliczanie delty i miejsc zerowych funkcji 
 
             wykres.obl_delta = (wykres.b * wykres.b) - 4 * wykres.a * wykres.c;
             wykres.p = ((-wykres.b) / (2 * wykres.a));
@@ -85,7 +136,7 @@ namespace Kalkulator_wsiz
             wykres.x1 = (-wykres.b - Math.Sqrt(wykres.obl_delta)) / (2 * wykres.a);
             wykres.x2 = (-wykres.b + Math.Sqrt(wykres.obl_delta)) / (2 * wykres.a);
 
-
+            ///warunek jezeleli wspolczynnik a jest wieksz niz 0 i delta jest dodatnia to wypisuje miejsca zerowe i wierzcholek
 
             if (wykres.a > 0 & wykres.obl_delta > 0)
             {
@@ -97,6 +148,7 @@ namespace Kalkulator_wsiz
                 tb_result8.Text = "(" + Math.Round(wykres.x1, 2) + ";" + "0)";
                 tb_result9.Text = "(" + Math.Round(wykres.x2, 2) + ";" + "0)";
             }
+            ///warunek jezeleli wspolczynnik a jest mniejszy od 0 i delta jest dodatnia to wypisuje miejsca zerowe i wierzcholek
             if (wykres.a < 0 & wykres.obl_delta > 0)
             {
                 wykres2.Visibility = Visibility;
@@ -107,12 +159,14 @@ namespace Kalkulator_wsiz
                 tb_result8.Text = "(" + Math.Round(wykres.x1, 2) + ";" + "0)";
                 tb_result9.Text = "(" + Math.Round(wykres.x2, 2) + ";" + "0)";
             }
+            ///warunek Jezeli a jest ujemne i delta mniejsza od zero to wyswietla wierzcholek
             if (wykres.a < 0 & wykres.obl_delta < 0)
             {
                 wykres3.Visibility = Visibility;
                 tb_result11.Visibility = Visibility;
                 tb_result11.Text = "(" + Math.Round(wykres.p, 2) + ";" + Math.Round(wykres.q, 2) + ")";
             }
+            ///warunek jezeli a jest wieksze niz 0 i delta mniejsza od zero to wyswietla wierzcholek
             if (wykres.a > 0 & wykres.obl_delta < 0)
             {
                 wykres4.Visibility = Visibility;
@@ -123,6 +177,28 @@ namespace Kalkulator_wsiz
             wykres_btn.IsEnabled = false;
 
         }
+
+        /**
+* <p>
+* Funkcja obslugujaca przycisk OBLICZ 
+* </p>
+* <param name="a">Zmienna a</param>
+* <param name=".b">Zmienna b</param>
+* <param name="c">Zmienna c</param>
+* <param name="obl_delta">Zmienna zachowujaca obliczona delte</param>
+* <param name="p">Zmienna przechowujaca wspolrzedna X wierzcholka </param>
+* <param name=".p">Zmienna przechowujaca wspolrzedna Y wierzcholka</param>
+* <param name=x1">Zmienna w ktorej znajduje sie obliczone miejsce zerowe x1</param>
+* <param name="x2t">Zmienna w ktorej znajduje sie obliczone miejsce zerowe x2</param>
+ * <param name="tb_result.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result1.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result2.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result3.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result4.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result5.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+ * <param name="tb_result6.Text">Pole tekstowe wyswietlajace rezultat obliczen</param>
+* @return Delta, miejsca zerowe, dziedzina, wierzcholek, zbior wartosci funkcji, monotonicznosc i postacie funkcji 
+*/
 
         private void draw_btn_Click(object sender, RoutedEventArgs e)
         {
