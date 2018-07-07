@@ -22,10 +22,7 @@ namespace Kalkulator_wsiz
     /// 
     class StandardowyKalkulator
     {
-        public double i;
-        public double q;
-        public double a;
-        public double sqrt;
+
     }
     public partial class Standard : Page
     {
